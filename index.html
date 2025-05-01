@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Army Calculator</title>
+    <style>
+        :root {
+            --primary-color: #3a506b;
+            --secondary-color: #5bc0be;
+            --accent-color: #0b132b;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --border-radius: 8px;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        img {
+          max-width: 100%;
+          height: auto;
+          border: 3px solid black;
+          display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .app-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .app-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .main-buttons {
+            margin: auto;
+            padding: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            gap: 50px;
+            justify-content: flex-start;
+        }
+
+        .button {
+            padding: 12px 24px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            min-width: 150px;
+        }
+
+        .button:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+        }
+
+        .button-terrain {
+            background-color: var(--primary-color);
+        }
+
+        .button-army1 {
+            background-color: var(--primary-color);
+        }
+
+        .button-army2 {
+            background-color: var(--primary-color);
+        }
+
+        .button-calculate {
+            background-color: var(--primary-color);
+        }
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            width: 100%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark-color);
+        }
+
+        /*comparisom table*/
+        .comparison-modal {
+            display: block;
+            border-radius: var(--border-radius);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+     
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        .comparison-table th, 
+        .comparison-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .comparison-table th {
+            background-color: var(--light-color);
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table td:first-child {
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .stat-name {
+            color: var(--dark-color);
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        /* Terrain Modal */
+        .terrain-sliders {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .slider-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #ddd;
+            outline: none;
+            border-radius: 5px;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--secondary-color);
+            cursor: pointer;
+        }
+
+        /* Army Modal */
+        .army-units {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .unit-card {
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            background-color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .unit-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+        }
+
+        .unit-image {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #999;
+            font-size: 0.9rem;
+        }
+
+        .unit-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .count-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: none;
+            background-color: var(--primary-color);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .count-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .app-title {
+                font-size: 2rem;
+            }
+            
+            .main-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .army-units {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal {
+                padding: 15px;
+            }
+            
+            .modal-title {
+                font-size: 1.2rem;
+            }
+            
+            .unit-card {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1 class="app-title">Army Calculator</h1>
+        </header>
+        
+        <div class="main-buttons">
+            <button id="terrain-button" class="button button-terrain">Terrain</button>
+            <button id="army1-button" class="button button-army1">Army 1</button>
+            <button id="army2-button" class="button button-army2">Army 2</button>
+            <button id="calculate-button" class="button button-calculate">Calculate</button>
+        </div>
+        
+        <!-- Terrain Modal -->
+        <div id="terrain-modal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Terrain Settings</h2>
+                    <button class="close-modal" id="close-terrain-modal">&times;</button>
+                </div>
+                <div class="terrain-sliders">
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Land</span>
+                            <span id="land-value">100%</span>
+                        </div>
+                        <input type="range" id="land-slider" data-slider-type="land" class="slider" min="0" max="100" value="100">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Forest</span>
+                            <span id="forest-value">0%</span>
+                        </div>
+                        <input type="range" id="forest-slider" data-slider-type="forest" class="slider" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Village</span>
+                            <span id="village-value">0%</span>
+                        </div>
+                        <input type="range" id="village-slider" data-slider-type="village" class="slider" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Water</span>
+                            <span id="water-value">0%</span>
+                        </div>
+                        <input type="range" id="water-slider" data-slider-type="water" class="slider" min="0" max="100" value="0">
+                    </div>
+                    
+                    <div class="slider-container">
+                        <div class="slider-label">
+                            <span>Road</span>
+                            <span id="road-value">0%</span>
+                        </div>
+                        <input type="range" id="road-slider" data-sliderType="road" class="slider" min="0" max="100" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="comparison-modal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Army Comparison</h2>
+                    <button id="close-comparison-modal" class="close-modal">&times;</button>
+                </div>
+                
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Stats</th>
+                            <th>Army 1</th>
+                            <th>Army 2</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="stat-name">Power</td>
+                            <td><span id="army1-power-value" class="stat-value">0%</span></td>
+                            <td><span id="army2-power-value" class="stat-value">0%</span></td>
+                        </tr>
+                        <tr>
+                            <td class="stat-name">Tactical Strength</td>
+                            <td><span id="army1-tactical-value" class="stat-value">0%</span></td>
+                            <td><span id="army2-tactical-value" class="stat-value">0%</span></td>
+                        </tr>
+                        <tr>
+                            <td class="stat-name">Strategic Flexibility</td>
+                            <td><span id="army1-flexibility-value" class="stat-value">0%</span></td>
+                            <td><span id="army2-flexibility-value" class="stat-value">0%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        
+        <!-- Army 1 Modal -->
+        <div id="army1-modal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Army 1 Editor</h2>
+                    <button class="close-modal" id="close-army1-modal">&times;</button>
+                </div>
+                <div class="army-units">
+                    <div class="unit-card">
+                        <div class="unit-name">Line Infantry</div>
+                        <div class="unit-image"> <img src="/images/lineInfantry.jpg"> </div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lineInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lineInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lineInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="unit-card">
+                        <div class="unit-name">Militia</div>
+                        <div class="unit-image"> <img src="/images/militiaInfantry.jpg"> </div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"militiaInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"militiaInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"militiaInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+
+                    <div class="unit-card">
+                        <div class="unit-name">Guard Infantry</div>
+                        <div class="unit-image"> <img src="/images/guardInfantry.jpg"> </div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"guardInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"guardInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"guardInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+        
+                    <div class="unit-card">
+                        <div class="unit-name">Light Infantry</div>
+                        <div class="unit-image"> <img src="/images/lightInfantry.jpg"> </div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lightInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lightInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lightInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+        
+                    <div class="unit-card">
+                        <div class="unit-name">Dragoons</div>
+                        <div class="unit-image"> <img src="/images/dragoons.jpg"> </div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"dragoon","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"dragoon"}'>
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"dragoon","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="unit-card">
+                        <div class="unit-name">12lb Artillery</div>
+                        <div class="unit-image"> <img src="/images/12-lb.jpg"> </div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery"}'>
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Army 2 Modal -->
+        <div id="army2-modal" class="modal-overlay">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2 class="modal-title">Army 2 Editor</h2>
+                    <button class="close-modal" id="close-army2-modal">&times;</button>
+                </div>
+                <div class="army-units">
+                    <div class="unit-card">
+                        <div class="unit-name">Line Infantry</div>
+                        <div class="unit-image"><img src="/images/lineInfantry.jpg"></div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lineInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lineInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lineInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+                    
+                     <div class="unit-card">
+                        <div class="unit-name">Militia</div>
+                        <div class="unit-image"><img src="/images/militiaInfantry.jpg"></div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"militiaInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"militiaInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"militiaInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="unit-card">
+                        <div class="unit-name">Guard Infantry</div>
+                        <div class="unit-image"><img src="/images/guardInfantry.jpg"></div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"guardInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"guardInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"guardInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+        
+                    <div class="unit-card">
+                        <div class="unit-name">Light Infantry</div>
+                        <div class="unit-image"><img src="/images/lightInfantry.jpg"></div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lightInfantry","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lightInfantry"}'>
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lightInfantry","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+        
+                    <div class="unit-card">
+                        <div class="unit-name">Dragoons</div>
+                        <div class="unit-image"><img src="/images/dragoons.jpg"></div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"dragoon","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"dragoon"}'>
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"dragoon","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+        
+                    <div class="unit-card">
+                        <div class="unit-name">12lb Artillery</div>
+                        <div class="unit-image"><img src="/images/12-lb.jpg"></div>
+                        <div class="unit-controls">
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery","increment":"negative"}'>-</button>
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery"}'>
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery","increment":"positive"}'>+</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/scripts/index.js" type="module" defer></script>
+</body>
+</html>
