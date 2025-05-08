@@ -547,7 +547,7 @@ const sixPoundHorseArtillery = {
     ranges: { close: 120, mid: 230, long: 370 },
     rangeDamageModifier: { close: 0.75, mid: 0, long: -0.75 },
     rangeWeapons: {
-        close: weapons.range.canisterFire6lb,
+        close: weapons.range.cannisterFire6lb,
         mid: weapons.shell.cannonBall6lb,
         long: weapons.shell.cannonBall6lb
     },

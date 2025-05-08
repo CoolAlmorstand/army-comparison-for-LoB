@@ -119,7 +119,6 @@ document.addEventListener('DOMContentLoaded', function() {
         InitializeArmy(army1)
         InitializeArmy(army2)
         const rating = getRating(army1, army2)
-        console.log(rating)
         army1PowerValue.textContent = (rating.powerRating.army1RelativeStrength * 100).toFixed(3) + "%"
         army2PowerValue.textContent = (rating.powerRating.army2RelativeStrength * 100).toFixed(3)+ "%"
         

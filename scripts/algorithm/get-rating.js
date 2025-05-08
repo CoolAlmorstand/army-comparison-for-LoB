@@ -14,11 +14,11 @@ function getPowerRating(army1, army2){
 }
 
 export function getRating(army1, army2){
+
     getArmysStats(army1, army2)
     
     const powerRating = getPowerRating(army1, army2)
     
-    console.log(army1)
     return { powerRating }
 }
     
