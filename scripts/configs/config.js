@@ -18,6 +18,9 @@ export const chargeResistanceModifier = {
 }
 
 
+// this this tge avg for clamp( (A/B) - 1, -1, 0.5) accross all values of A and B ranging 0 - 1
+export const proportionAvg = -0.23611111111111
+
 export const tileWidth = 16
 
 //export const terrains = ["forest", "land", "village", "river"]

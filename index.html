@@ -444,147 +444,286 @@
         </div>
 
         
-        <!-- Army 1 Modal -->
-        <div id="army1-modal" class="modal-overlay">
-            <div class="modal">
-                <div class="modal-header">
-                    <h2 class="modal-title">Army 1 Editor</h2>
-                    <button class="close-modal" id="close-army1-modal">&times;</button>
-                </div>
-                <div class="army-units">
-                    <div class="unit-card">
-                        <div class="unit-name">Line Infantry</div>
-                        <div class="unit-image"> <img src="images/lineInfantry.jpg"> </div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"lineInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lineInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"lineInfantry","increment":"positive"}'>+</button>
-                        </div>
-                    </div>
-                    
-                    <div class="unit-card">
-                        <div class="unit-name">Militia</div>
-                        <div class="unit-image"> <img src="images/militiaInfantry.jpg"> </div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"militiaInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"militiaInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"militiaInfantry","increment":"positive"}'>+</button>
-                        </div>
-                    </div>
-
-                    <div class="unit-card">
-                        <div class="unit-name">Guard Infantry</div>
-                        <div class="unit-image"> <img src="images/guardInfantry.jpg"> </div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"guardInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"guardInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"guardInfantry","increment":"positive"}'>+</button>
-                        </div>
+        <!-- Army 1 Modal -->  
+        <div id="army1-modal" class="modal-overlay">  
+            <div class="modal">  
+                <div class="modal-header">  
+                    <h2 class="modal-title">Army 1 Editor</h2>  
+                    <button class="close-modal" id="close-army1-modal">&times;</button>  
+                </div>  
+                <div class="army-units">  
+                    <div class="unit-card">  
+                        <div class="unit-name">Line Infantry</div>  
+                        <div class="unit-image"> <img src="images/lineInfantry.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lineInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lineInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lineInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">Militia</div>  
+                        <div class="unit-image"> <img src="images/militiaInfantry.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"militiaInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"militiaInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"militiaInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">Guard Infantry</div>  
+                        <div class="unit-image"> <img src="images/guardInfantry.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"guardInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"guardInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"guardInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">Light Infantry</div>  
+                        <div class="unit-image"> <img src="images/lightInfantry.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lightInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lightInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lightInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">Dragoons</div>  
+                        <div class="unit-image"> <img src="images/dragoons.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"dragoon","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"dragoon"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"dragoon","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">Lancers</div>  
+                        <div class="unit-image"> <img src="images/lancer.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lancer","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lancer"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"lancer","increment":"positive"}'>+</button>  
+                        </div>  
                     </div>
         
-                    <div class="unit-card">
-                        <div class="unit-name">Light Infantry</div>
-                        <div class="unit-image"> <img src="images/lightInfantry.jpg"> </div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"lightInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"lightInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"lightInfantry","increment":"positive"}'>+</button>
-                        </div>
+                    <div class="unit-card">  
+                        <div class="unit-name">Hussars</div>  
+                        <div class="unit-image"> <img src="images/hussar.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"hussar","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"hussar"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"hussar","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">Cuirassiers</div>  
+                        <div class="unit-image"> <img src="images/cuirassier.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"cuirassier","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"cuirassier"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"cuirassier","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">4lb Foot Artillery</div>  
+                        <div class="unit-image"> <img src="images/4-lb.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"fourPoundFootArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"fourPoundFootArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"fourPoundFootArtillery","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">6lb Horse Artillery</div>  
+                        <div class="unit-image"> <img src="images/6-lb-horse.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"sixPoundHorseArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"sixPoundHorseArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"sixPoundHorseArtillery","increment":"positive"}'>+</button>  
+                        </div>  
                     </div>
         
-                    <div class="unit-card">
-                        <div class="unit-name">Dragoons</div>
-                        <div class="unit-image"> <img src="images/dragoons.jpg"> </div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"dragoon","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"dragoon"}'>
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"dragoon","increment":"positive"}'>+</button>
-                        </div>
-                    </div>
-                    
-                    <div class="unit-card">
-                        <div class="unit-name">12lb Artillery</div>
-                        <div class="unit-image"> <img src="images/12-lb.jpg"> </div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery"}'>
-                            <button class="count-button" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery","increment":"positive"}'>+</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Army 2 Modal -->
-        <div id="army2-modal" class="modal-overlay">
-            <div class="modal">
-                <div class="modal-header">
-                    <h2 class="modal-title">Army 2 Editor</h2>
-                    <button class="close-modal" id="close-army2-modal">&times;</button>
-                </div>
-                <div class="army-units">
-                    <div class="unit-card">
-                        <div class="unit-name">Line Infantry</div>
-                        <div class="unit-image"><img src="images/lineInfantry.jpg"></div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"lineInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lineInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"lineInfantry","increment":"positive"}'>+</button>
-                        </div>
-                    </div>
-                    
-                     <div class="unit-card">
-                        <div class="unit-name">Militia</div>
-                        <div class="unit-image"><img src="images/militiaInfantry.jpg"></div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"militiaInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"militiaInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"militiaInfantry","increment":"positive"}'>+</button>
-                        </div>
-                    </div>
-                    
-                    <div class="unit-card">
-                        <div class="unit-name">Guard Infantry</div>
-                        <div class="unit-image"><img src="images/guardInfantry.jpg"></div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"guardInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"guardInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"guardInfantry","increment":"positive"}'>+</button>
-                        </div>
+                    <div class="unit-card">  
+                        <div class="unit-name">6-inch Howitzer</div>  
+                        <div class="unit-image"> <img src="images/howitzer.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"sixInchHowitzer","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"sixInchHowitzer"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"sixInchHowitzer","increment":"positive"}'>+</button>  
+                        </div>  
                     </div>
         
-                    <div class="unit-card">
-                        <div class="unit-name">Light Infantry</div>
-                        <div class="unit-image"><img src="images/lightInfantry.jpg"></div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"lightInfantry","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lightInfantry"}'>
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"lightInfantry","increment":"positive"}'>+</button>
-                        </div>
+                    <div class="unit-card">  
+                        <div class="unit-name">8lb Foot Artillery</div>  
+                        <div class="unit-image"> <img src="images/8-lb.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"eightPoundFootArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"eightPoundFootArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"eightPoundFootArtillery","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">12lb Artillery</div>  
+                        <div class="unit-image"> <img src="images/12-lb.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army1","unitId":"twelvePoundFootArtillery","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
+        </div>  
+        
+        <!-- Army 2 Modal -->  
+        <div id="army2-modal" class="modal-overlay">  
+            <div class="modal">  
+                <div class="modal-header">  
+                    <h2 class="modal-title">Army 2 Editor</h2>  
+                    <button class="close-modal" id="close-army2-modal">&times;</button>  
+                </div>  
+                <div class="army-units">  
+                    <div class="unit-card">  
+                        <div class="unit-name">Line Infantry</div>  
+                        <div class="unit-image"><img src="images/lineInfantry.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lineInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lineInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lineInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">Militia</div>  
+                        <div class="unit-image"><img src="images/militiaInfantry.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"militiaInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"militiaInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"militiaInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">Guard Infantry</div>  
+                        <div class="unit-image"><img src="images/guardInfantry.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"guardInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"guardInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"guardInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">Light Infantry</div>  
+                        <div class="unit-image"><img src="images/lightInfantry.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lightInfantry","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lightInfantry"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lightInfantry","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">Dragoons</div>  
+                        <div class="unit-image"><img src="images/dragoons.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"dragoon","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"dragoon"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"dragoon","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">Lancers</div>  
+                        <div class="unit-image"><img src="images/lancer.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lancer","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"lancer"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"lancer","increment":"positive"}'>+</button>  
+                        </div>  
                     </div>
         
-                    <div class="unit-card">
-                        <div class="unit-name">Dragoons</div>
-                        <div class="unit-image"><img src="images/dragoons.jpg"></div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"dragoon","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"dragoon"}'>
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"dragoon","increment":"positive"}'>+</button>
-                        </div>
+                    <div class="unit-card">  
+                        <div class="unit-name">Hussars</div>  
+                        <div class="unit-image"><img src="images/hussar.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"hussar","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"hussar"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"hussar","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">Cuirassiers</div>  
+                        <div class="unit-image"> <img src="images/cuirassier.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"cuirassier","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"cuirassier"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"cuirassier","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">4lb Foot Artillery</div>  
+                        <div class="unit-image"> <img src="images/4-lb.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"fourPoundFootArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"fourPoundFootArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"fourPoundFootArtillery","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">6lb Horse Artillery</div>  
+                        <div class="unit-image"> <img src="images/6-lb-horse.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"sixPoundHorseArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"sixPoundHorseArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"sixPoundHorseArtillery","increment":"positive"}'>+</button>  
+                        </div>  
                     </div>
         
-                    <div class="unit-card">
-                        <div class="unit-name">12lb Artillery</div>
-                        <div class="unit-image"><img src="images/12-lb.jpg"></div>
-                        <div class="unit-controls">
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery","increment":"negative"}'>-</button>
-                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery"}'>
-                            <button class="count-button" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery","increment":"positive"}'>+</button>
-                        </div>
+                    <div class="unit-card">  
+                        <div class="unit-name">6-inch Howitzer</div>  
+                        <div class="unit-image"> <img src="images/howitzer.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"sixInchHowitzer","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"sixInchHowitzer"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"sixInchHowitzer","increment":"positive"}'>+</button>  
+                        </div>  
                     </div>
-
-                </div>
-            </div>
+        
+                    <div class="unit-card">  
+                        <div class="unit-name">8lb Foot Artillery</div>  
+                        <div class="unit-image"> <img src="images/8-lb.jpg"> </div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"eightPoundFootArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"eightPoundFootArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"eightPoundFootArtillery","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>
+                      
+                    <div class="unit-card">  
+                        <div class="unit-name">12lb Artillery</div>  
+                        <div class="unit-image"><img src="images/12-lb.jpg"></div>  
+                        <div class="unit-controls">  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery","increment":"negative"}'>-</button>  
+                            <input type="number" class="count-input" value="0" min="0" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery"}'>  
+                            <button class="count-button" data-actions='{"team":"army2","unitId":"twelvePoundFootArtillery","increment":"positive"}'>+</button>  
+                        </div>  
+                    </div>  
+                </div>  
+            </div>  
         </div>
     </div>
 

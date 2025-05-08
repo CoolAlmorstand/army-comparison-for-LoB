@@ -69,8 +69,7 @@ function getAvgChargeResistance(unit){
         ( avgOfLinearChargeRes * linearChargeResRatio)
     )
     
-    //debugger 
-    return avgChargeResistance
+    return avgChargeResistance / 100
 }
 
 

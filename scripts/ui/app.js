@@ -1,7 +1,7 @@
 
 
 import { terrains } from "../configs/terrains.js"
-import { getRating } from "../get-stats/get-rating.js"
+import { getRating } from "../algorithm/get-rating.js"
 import { InitializeArmy } from "../initialize/initialize.js"
 function buildArmyJson(inputMap){
     
@@ -18,6 +18,9 @@ function buildArmyJson(inputMap){
         for(let unitId in inputMap[team]){
             
             const amount = parseInt(inputMap[team][unitId].inputField.value)
+            
+            if(amount < 1){ continue }
+                
             army[team].units[unitId] = {
                 amount: amount
             }
@@ -117,9 +120,21 @@ document.addEventListener('DOMContentLoaded', function() {
         InitializeArmy(army2)
         const rating = getRating(army1, army2)
         console.log(rating)
-        army1PowerValue.textContent = Math.round(rating.powerRating.army1 * 100) / 100 + "%"
-        army2PowerValue.textContent = Math.round(rating.powerRating.army2 * 100) / 100 + "%"
+        army1PowerValue.textContent = (rating.powerRating.army1RelativeStrength * 100).toFixed(3) + "%"
+        army2PowerValue.textContent = (rating.powerRating.army2RelativeStrength * 100).toFixed(3)+ "%"
         
+        army2PowerValue.style.color = "black"
+        army1PowerValue.style.color = "black"
+        if( rating.powerRating.army1RelativeStrength.toFixed(3) > rating.powerRating.army2RelativeStrength.toFixed(3)){
+            army2PowerValue.style.color = "#d32f2f"
+        }
+        else if(rating.powerRating.army1RelativeStrength.toFixed(3) < rating.powerRating.army2RelativeStrength.toFixed(3)) {
+            army1PowerValue.style.color = "#d32f2f"
+        }
+        else {
+            army2PowerValue.style.color = "#f9a825"
+            army1PowerValue.style.color = "#f9a825"
+        }
         comparisonsTable.style.display = "flex"
     })
     
